@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body{
+            background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            background-color: rgba(0, 0, 0, 0.818);
+            width: 40%;
+            top: 50%;
+            left: 50%;  
+            position: absolute;
+            text-align: center;
+            border-radius: 7px;
+            transform: translate(-50%, -50%);
+            padding: 2rem;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.675);
+        }
+        span{
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            font-weight: 900;
+            font-size: 5rem;
+            
+        }
+        #session{
+            font-size: 2rem;
+            color: darkgrey;
+        }
+        #hours,#minutes,#seconds{
+            border: 2px solid white;
+            border-radius: 50%;
+            background-color: aliceblue;
+            color: black;
+            padding: 1rem;
+            box-shadow: inset -3px -3px 7px rgba(255, 255, 255, 1), inset 4px 4px 7px rgba(0, 0, 0, 0.2)
+        }
+        
+        h1 {
+    font-size: 72px;
+    background: -webkit-linear-gradient(rgb(69, 71, 173), #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <h1>--- Digital Clock ---</h1>
+    </div>
+    <div class="container">
+        <span id="hours">00</span>
+        <span>:</span>
+        <span id="minutes">00</span>
+        <span>:</span>
+        <span id="seconds">00</span>
+
+        <span id="session">AM</span>
+    </div>
+
+    <script>
+        function displayTime(){
+    var dateTime = new Date();
+    var hrs = dateTime.getHours();
+    var min = dateTime.getMinutes();
+    var sec = dateTime.getSeconds();
+    var session = document.getElementById('session');
+
+    if(hrs >= 12){
+        session.innerHTML = 'PM';
+    }else{
+        session.innerHTML = 'AM';
+    }
+
+    if(hrs > 12){
+        hrs = hrs - 12;
+    }
+    if(min < 10){
+        min = "0" +min
+    }
+    if(sec<10){
+        sec = "0" + sec
+    }
+    if(hrs<10){
+        hrs = "0" + hrs 
+    }
+
+    document.getElementById('hours').innerHTML = hrs;
+    document.getElementById('minutes').innerHTML = min;
+    document.getElementById('seconds').innerHTML = sec;
+}
+setInterval(displayTime, 10);
+    </script>
+</body>
+</html>
